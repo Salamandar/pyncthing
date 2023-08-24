@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "pyncthing"
+version = "0.1.0"
+description = "Python bindings to the Syncthing API"
+authors = ["Félix Piédallu <felix@piedallu.me>"]
+license = "GPLv3"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 120
+target-version = ['py37']
+extend-exclude = '''
+^/\.git
+^/\.vscode
+^/\.github
+'''
+
+[tool.pylint]
+
+disable = [
+    "missing-function-docstring",
+    "missing-module-docstring"
+]
