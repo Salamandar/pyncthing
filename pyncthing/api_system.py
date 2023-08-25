@@ -3,7 +3,7 @@
 
 # pylint: disable=too-many-public-methods
 
-from typing import Optional, List, Dict, Any
+from typing import Any, Dict, List, Optional
 
 from .api import APIDir
 

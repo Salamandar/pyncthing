@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-from typing import Optional, Dict, Any, Generator
+from typing import Any, Dict, Generator, Optional
+
 import requests
 
 # import logging

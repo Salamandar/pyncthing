@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 from typing import Any, Generator
+
 import requests
 from urllib3.exceptions import ReadTimeoutError
-
 
 from .api import API, APIDir
 

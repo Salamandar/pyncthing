@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-from typing import Dict, Tuple, List, Any, Generator
+from typing import Any, Dict, Generator, List, Tuple
+
 from .api import APIDir
 
 PaginatedErrors = Tuple[List[Dict[str, str]], Tuple[int, int]]

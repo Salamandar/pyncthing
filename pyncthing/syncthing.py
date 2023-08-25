@@ -4,9 +4,8 @@ Entrypoint for the Syncthing REST API.
 """
 
 from .api import API, APIDir
-
-from .api_config import Config
 from .api_cluster import Cluster
+from .api_config import Config
 from .api_db import DB
 from .api_debug import Debug
 from .api_events import Events

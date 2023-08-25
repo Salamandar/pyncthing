@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-from typing import Dict, Any
+from typing import Any, Dict
+
 from .api import APIDir
 
 

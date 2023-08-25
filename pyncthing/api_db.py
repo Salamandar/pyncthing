@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-from typing import Dict, List, Any, Optional, Generator, Tuple
+from typing import Any, Dict, Generator, List, Optional, Tuple
+
 from .api import APIDir
 
 
