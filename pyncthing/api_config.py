@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from typing import Any, Optional, Self
+from typing import Any, Optional
 
 from .api import API, APIDir
 
@@ -47,15 +47,15 @@ class ConfigDataAPIDir(APIDir):
         self.has_patch = False
         self.has_delete = False
 
-    def with_patch(self) -> Self:
+    def with_patch(self) -> "ConfigDataAPIDir":
         self.has_patch = True
         return self
 
-    def with_post(self) -> Self:
+    def with_post(self) -> "ConfigDataAPIDir":
         self.has_post = True
         return self
 
-    def with_delete(self) -> Self:
+    def with_delete(self) -> "ConfigDataAPIDir":
         self.has_delete = True
         return self
 
