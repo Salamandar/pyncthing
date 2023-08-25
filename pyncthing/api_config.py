@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from typing import Any, Optional
+from typing import Any, Optional, Self
 
 from .api import API, APIDir
 
@@ -34,18 +34,30 @@ class ConfigAPIDir(APIDir):
     def __call__(self, data_id: Optional[str] = None) -> Any:
         if data_id is None:
             # Return the /rest/config/{folders,devices}
-            return ConfigDataAPIDir(self.api, f"{self.api_dir}", True, False, False)
+            return ConfigDataAPIDir(self.api, f"{self.api_dir}").with_post()
         else:
             # Return the /rest/config/{folders,devices}/data_id
-            return ConfigDataAPIDir(self.api, f"{self.api_dir}/{data_id}", False, True, True)
+            return ConfigDataAPIDir(self.api, f"{self.api_dir}/{data_id}").with_patch().with_delete()
 
 
 class ConfigDataAPIDir(APIDir):
-    def __init__(self, api: API, api_dir: str, has_post: bool, has_patch: bool, has_delete: bool) -> None:
+    def __init__(self, api: API, api_dir: str) -> None:
         super().__init__(api, api_dir)
-        self.has_post = has_post
-        self.has_patch = has_patch
-        self.has_delete = has_delete
+        self.has_post = False
+        self.has_patch = False
+        self.has_delete = False
+
+    def with_patch(self) -> Self:
+        self.has_patch = True
+        return self
+
+    def with_post(self) -> Self:
+        self.has_post = True
+        return self
+
+    def with_delete(self) -> Self:
+        self.has_delete = True
+        return self
 
     def get(self) -> Any:
         return self._get("").json()

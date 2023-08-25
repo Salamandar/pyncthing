@@ -27,7 +27,10 @@ extend-exclude = '''
 
 [tool.pylint]
 
+max-line-length = 120
 disable = [
     "missing-function-docstring",
-    "missing-module-docstring"
+    "missing-module-docstring",
+    "missing-class-docstring",
+    "no-else-return",
 ]

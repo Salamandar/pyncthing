@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Entrypoint for the system Syncthing REST API."""
 
+# pylint: disable=too-many-public-methods
+
 from typing import Optional, List, Dict, Any
 
 from .api import APIDir
