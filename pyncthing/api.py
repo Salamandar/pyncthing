@@ -36,19 +36,9 @@ class API:
         try:
             response.raise_for_status()
         except Exception as err:
-            text = response.text
-            err.add_note(text)
-            self.requestprint(response.request)
+            err.add_note(response.text)
             raise
         return response
-
-    def requestprint(self, req) -> None:
-        print('{}\n{}\r\n{}\r\n\r\n{}'.format(
-            '-----------START-----------',
-            req.method + ' ' + req.url,
-            '\r\n'.join('{}: {}'.format(k, v) for k, v in req.headers.items()),
-            req.body,
-        ))
 
 
 class APIDir:
