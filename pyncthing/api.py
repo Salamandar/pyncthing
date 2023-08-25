@@ -43,6 +43,7 @@ class API:
 
 # pylint: disable=too-few-public-methods
 
+
 class APIDir:
     def __init__(self, api: API, api_dir: str) -> None:
         self.api: API = api

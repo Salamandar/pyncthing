@@ -2,4 +2,6 @@
 
 from .syncthing import Syncthing
 
-__all__ = ["Syncthing", ]
+__all__ = [
+    "Syncthing",
+]
