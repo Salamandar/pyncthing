@@ -128,6 +128,31 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
+name = "types-requests"
+version = "2.31.0.2"
+description = "Typing stubs for requests"
+optional = false
+python-versions = "*"
+files = [
+    {file = "types-requests-2.31.0.2.tar.gz", hash = "sha256:6aa3f7faf0ea52d728bb18c0a0d1522d9bfd8c72d26ff6f61bfc3d06a411cf40"},
+    {file = "types_requests-2.31.0.2-py3-none-any.whl", hash = "sha256:56d181c85b5925cbc59f4489a57e72a8b2166f18273fd8ba7b6fe0c0b986f12a"},
+]
+
+[package.dependencies]
+types-urllib3 = "*"
+
+[[package]]
+name = "types-urllib3"
+version = "1.26.25.14"
+description = "Typing stubs for urllib3"
+optional = false
+python-versions = "*"
+files = [
+    {file = "types-urllib3-1.26.25.14.tar.gz", hash = "sha256:229b7f577c951b8c1b92c1bc2b2fdb0b49847bd2af6d1cc2a2e3dd340f3bda8f"},
+    {file = "types_urllib3-1.26.25.14-py3-none-any.whl", hash = "sha256:9683bbb7fb72e32bfe9d2be6e04875fbe1b3eeec3cbb4ea231435aa7fd6b4f0e"},
+]
+
+[[package]]
 name = "urllib3"
 version = "2.0.4"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
@@ -146,5 +171,5 @@ zstd = ["zstandard (>=0.18.0)"]
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.11"
-content-hash = "a5780ef8e06df616beb6eb67292099db49b8fe658fcbf22940e5e1af96a7c14e"
+python-versions = "^3.8"
+content-hash = "539263950d921bfec76c041551fc6557c7e3e703b960748fd2eccbe01bc66fa6"
