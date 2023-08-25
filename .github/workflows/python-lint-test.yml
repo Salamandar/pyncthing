@@ -21,6 +21,11 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+    - name: Poetry Install
+      # You may pin to the exact commit or the version.
+      # uses: knowsuchagency/poetry-install@7ed80d49910319d3e14ac262a5c81f681de48de0
+      uses: knowsuchagency/poetry-install@v2
+
     - name: Lint with pylint
       uses: gabriel-milan/action-pylint@v1
       with:
@@ -35,6 +40,11 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+    - name: Poetry Install
+      # You may pin to the exact commit or the version.
+      # uses: knowsuchagency/poetry-install@7ed80d49910319d3e14ac262a5c81f681de48de0
+      uses: knowsuchagency/poetry-install@v2
+
     - name: Install flake8
       run: pip install flake8
     - name: Lint with flake8
@@ -53,6 +63,11 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+    - name: Poetry Install
+      # You may pin to the exact commit or the version.
+      # uses: knowsuchagency/poetry-install@7ed80d49910319d3e14ac262a5c81f681de48de0
+      uses: knowsuchagency/poetry-install@v2
+
     - name: Lint with mypy
       if: success() || failure()
       uses: jpetrucciani/mypy-check@master
@@ -67,6 +82,11 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+    - name: Poetry Install
+      # You may pin to the exact commit or the version.
+      # uses: knowsuchagency/poetry-install@7ed80d49910319d3e14ac262a5c81f681de48de0
+      uses: knowsuchagency/poetry-install@v2
+
     - name: Lint with isort
       if: success() || failure()
       uses: isort/isort-action@v1
@@ -79,6 +99,11 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+    - name: Poetry Install
+      # You may pin to the exact commit or the version.
+      # uses: knowsuchagency/poetry-install@7ed80d49910319d3e14ac262a5c81f681de48de0
+      uses: knowsuchagency/poetry-install@v2
+
     - name: Lint with black
       if: success() || failure()
       uses: jpetrucciani/black-check@master
@@ -91,6 +116,11 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+    - name: Poetry Install
+      # You may pin to the exact commit or the version.
+      # uses: knowsuchagency/poetry-install@7ed80d49910319d3e14ac262a5c81f681de48de0
+      uses: knowsuchagency/poetry-install@v2
+
     - name: Install pytest
       run: pip install pytest
     - name: Test with pytest
