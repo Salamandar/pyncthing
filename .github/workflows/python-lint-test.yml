@@ -28,13 +28,24 @@ jobs:
       # uses: knowsuchagency/poetry-install@7ed80d49910319d3e14ac262a5c81f681de48de0
       uses: knowsuchagency/poetry-install@v2
 
-    - name: Linting with flake8, mypy, isort
-      uses: programmingwithalex/pylinter@main
-
-    - name: Linting with pylint
+    - name: Lint with pylint
       uses: gabriel-milan/action-pylint@v1
 
-    - name: Linting with black
+    - name: Lint with flake8
+      uses: grantmcconnaughey/lintly-flake8-github-action@v1.0
+      with:
+        # The GitHub API token to create reviews with
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Lint with mypy
+      uses: jpetrucciani/mypy-check@master
+      with:
+        mypy_flags: --install-types
+
+    - name: Lint with isort
+      uses: isort/isort-action@v1
+
+    - name: Lint with black
       uses: jpetrucciani/black-check@master
 
     - name: Test with pytest
