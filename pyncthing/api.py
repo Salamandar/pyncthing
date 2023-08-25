@@ -31,14 +31,19 @@ class API:
         try:
             response = requests.request(method, url, **final_kwargs)
         except Exception as err:
-            err.add_note(f"While accessing {url}")
-            raise
+            if hasattr(err, "add_note"):
+                err.add_note(f"While accessing {url}")
+                raise
+            # Python <3.11 compat
+            raise RuntimeError(f"While accessing {url}") from err
 
         try:
             response.raise_for_status()
         except Exception as err:
-            err.add_note(response.text)
-            raise
+            if hasattr(err, "add_note"):
+                err.add_note(response.text)
+                raise
+            raise RuntimeError(response.text) from err
         return response
 
 

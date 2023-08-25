@@ -37,4 +37,5 @@ disable = [
     "missing-module-docstring",
     "missing-class-docstring",
     "no-else-return",
+    "fixme"
 ]
