@@ -13,27 +13,30 @@ permissions:
   contents: read
 
 jobs:
-  build:
-
+  lint-pylint:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python 3.10
+    - name: Set up Python
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
-    - name: Poetry Install
-      # You may pin to the exact commit or the version.
-      # uses: knowsuchagency/poetry-install@7ed80d49910319d3e14ac262a5c81f681de48de0
-      uses: knowsuchagency/poetry-install@v2
-
     - name: Lint with pylint
       uses: gabriel-milan/action-pylint@v1
       with:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}} # GitHub token
         path: "pyncthing" # Glob pattern for files to lint
 
+  lint-flake8:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install flake8
+      run: pip install flake8
     - name: Lint with flake8
       if: success() || failure()
       uses: suo/flake8-github-action@releases/v1
@@ -42,20 +45,54 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  lint-mypy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
     - name: Lint with mypy
       if: success() || failure()
       uses: jpetrucciani/mypy-check@master
       with:
         mypy_flags: --install-types --non-interactive
 
+  lint-isort:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
     - name: Lint with isort
       if: success() || failure()
       uses: isort/isort-action@v1
 
+  lint-black:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
     - name: Lint with black
       if: success() || failure()
       uses: jpetrucciani/black-check@master
 
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install pytest
+      run: pip install pytest
     - name: Test with pytest
       if: success() || failure()
       run: |
