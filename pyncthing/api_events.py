@@ -36,8 +36,7 @@ class Events(APIDir):
         while self._running:
             try:
                 params = {"since": self._last_seen_id}
-                events = self._get("", params=params, timeout=self._timeout
-                                   ).json()
+                events = self._get("", params=params, timeout=self._timeout).json()
                 for event in events:
                     yield event
                 self._last_seen_id = events[-1]["id"]

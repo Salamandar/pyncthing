@@ -19,9 +19,7 @@ class System(APIDir):
     def debug(self) -> Dict[str, Any]:
         return self._get("debug").json()
 
-    def debug_post(self,
-                   enable: Optional[List[str]] = None,
-                   disable: Optional[List[str]] = None) -> None:
+    def debug_post(self, enable: Optional[List[str]] = None, disable: Optional[List[str]] = None) -> None:
         params = {}
         if enable:
             params["enable"] = ",".join(enable)
@@ -83,5 +81,6 @@ class System(APIDir):
 
     def version(self) -> Dict[str, str]:
         return self._get("version").json()
+
 
 # FIXME: handle standard errors as notfound

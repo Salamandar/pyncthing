@@ -7,13 +7,11 @@ from .api import APIDir
 class DB(APIDir):
     """Entrypoint class for the db Syncthing REST API."""
 
-    def browse(self, folder: str, levels: Optional[int],
-               prefix: Optional[str]) -> List[Dict[str, Any]]:
+    def browse(self, folder: str, levels: Optional[int], prefix: Optional[str]) -> List[Dict[str, Any]]:
         params = self.autoparams(folder=folder, levels=levels, prefix=prefix)
         return self._get("browse", params=params).json()
 
-    def completion(self, folder: Optional[str], device: Optional[str]
-                   ) -> Dict[str, Any]:
+    def completion(self, folder: Optional[str], device: Optional[str]) -> Dict[str, Any]:
         params = self.autoparams(folder=folder, device=device)
         return self._get("completion", params=params).json()
 
@@ -25,21 +23,18 @@ class DB(APIDir):
         params = {"folder": folder}
         return self._get("ignores", params=params).json()
 
-    def ignores_post(self, folder: str, ignore: List[str]
-                     ) -> Dict[str, List[str]]:
+    def ignores_post(self, folder: str, ignore: List[str]) -> Dict[str, List[str]]:
         params = {"folder": folder}
         return self._post("ignores", params=params, json=ignore).json()
 
-    def localchanged(self, folder: str
-                     ) -> Generator[Dict[str, Any], None, None]:
+    def localchanged(self, folder: str) -> Generator[Dict[str, Any], None, None]:
         for page in self._get_paginated("localchanged", {"folder": folder}):
             if not page["files"]:
                 return
             for file in page["files"]:
                 yield file
 
-    def need(self, folder: str
-             ) -> Generator[Tuple[str, Dict[str, Any]], None, None]:
+    def need(self, folder: str) -> Generator[Tuple[str, Dict[str, Any]], None, None]:
         """
         Returns a generator that yields a tuple(state, file)
         where state is "progress", "queued" or "rest"
@@ -61,8 +56,7 @@ class DB(APIDir):
         params = {"folder": folder, "file": file}
         self._post("prio", params=params)
 
-    def remoteneed(self, folder: str, device: str
-                   ) -> Generator[Dict[str, Any], None, None]:
+    def remoteneed(self, folder: str, device: str) -> Generator[Dict[str, Any], None, None]:
         params = {"folder": folder, "device": device}
         for page in self._get_paginated("remoteneed", params):
             if not page["files"]:

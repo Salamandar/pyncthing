@@ -59,15 +59,10 @@ class APIDir():
         self.api_dir: str = api_dir
 
     def autoparams(self, **kwargs):
-        return {
-            key: value
-            for key, value in kwargs.items()
-            if value is not None
-        }
+        return {key: value for key, value in kwargs.items() if value is not None}
 
     def _request(self, path: str, method: str = "", **kwargs):
-        return self.api.request(
-            f"{self.api_dir}/{path}", method=method, **kwargs)
+        return self.api.request(f"{self.api_dir}/{path}", method=method, **kwargs)
 
     def _get(self, path, **kwargs):
         return self._request(path, **kwargs, method="GET")
@@ -84,8 +79,7 @@ class APIDir():
     def _delete(self, path, **kwargs):
         return self._request(path, **kwargs, method="DELETE")
 
-    def _get_paginated(self, path, general_params: Dict[str, Any]
-                       ) -> Generator[Dict[Any, Any], None, None]:
+    def _get_paginated(self, path, general_params: Dict[str, Any]) -> Generator[Dict[Any, Any], None, None]:
         next_page = 0
         while True:
             params = general_params | {"page": next_page}

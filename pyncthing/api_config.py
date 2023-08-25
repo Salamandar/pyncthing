@@ -34,20 +34,14 @@ class ConfigAPIDir(APIDir):
     def __call__(self, data_id: Optional[str] = None) -> Any:
         if data_id is None:
             # Return the /rest/config/{folders,devices}
-            return ConfigDataAPIDir(self.api, f"{self.api_dir}",
-                                    True, False, False)
+            return ConfigDataAPIDir(self.api, f"{self.api_dir}", True, False, False)
         else:
             # Return the /rest/config/{folders,devices}/data_id
-            return ConfigDataAPIDir(self.api, f"{self.api_dir}/{data_id}",
-                                    False, True, True)
+            return ConfigDataAPIDir(self.api, f"{self.api_dir}/{data_id}", False, True, True)
 
 
 class ConfigDataAPIDir(APIDir):
-
-    def __init__(self, api: API, api_dir: str,
-                 has_post: bool,
-                 has_patch: bool,
-                 has_delete: bool) -> None:
+    def __init__(self, api: API, api_dir: str, has_post: bool, has_patch: bool, has_delete: bool) -> None:
         super().__init__(api, api_dir)
         self.has_post = has_post
         self.has_patch = has_patch
