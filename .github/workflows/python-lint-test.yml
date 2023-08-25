@@ -35,22 +35,27 @@ jobs:
         path: "pyncthing" # Glob pattern for files to lint
 
     - name: Lint with flake8
+      if: success() || failure()
       uses: grantmcconnaughey/lintly-flake8-github-action@v1.0
       with:
         # The GitHub API token to create reviews with
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Lint with mypy
+      if: success() || failure()
       uses: jpetrucciani/mypy-check@master
       with:
         mypy_flags: --install-types
 
     - name: Lint with isort
+      if: success() || failure()
       uses: isort/isort-action@v1
 
     - name: Lint with black
+      if: success() || failure()
       uses: jpetrucciani/black-check@master
 
     - name: Test with pytest
+      if: success() || failure()
       run: |
         pytest
