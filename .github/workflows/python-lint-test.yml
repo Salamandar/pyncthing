@@ -46,7 +46,7 @@ jobs:
       if: success() || failure()
       uses: jpetrucciani/mypy-check@master
       with:
-        mypy_flags: --install-types
+        mypy_flags: --install-types --non-interactive
 
     - name: Lint with isort
       if: success() || failure()
