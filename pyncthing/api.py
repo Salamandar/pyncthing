@@ -2,10 +2,11 @@
 
 from typing import Optional, Dict, Any, Generator
 import requests
+
 # import logging
 
 
-class API():
+class API:
     """Low level client."""
 
     def __init__(self, host: str) -> None:
@@ -20,10 +21,7 @@ class API():
 
         # Compose the kwargs to requests (could be overriden from apidirs)
         # But we want the API Key always here.
-        final_kwargs: Dict[str, Any] = {
-            "timeout": 10,
-            "headers": {}
-        }
+        final_kwargs: Dict[str, Any] = {"timeout": 10, "headers": {}}
         final_kwargs.update(kwargs)
         if final_kwargs.get("apikey", True):
             final_kwargs["headers"].update({"X-API-Key": self.api_key})
@@ -53,7 +51,7 @@ class API():
         ))
 
 
-class APIDir():
+class APIDir:
     def __init__(self, api: API, api_dir: str) -> None:
         self.api: API = api
         self.api_dir: str = api_dir
