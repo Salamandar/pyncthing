@@ -30,6 +30,9 @@ jobs:
 
     - name: Lint with pylint
       uses: gabriel-milan/action-pylint@v1
+      with:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}} # GitHub token
+        path: "pyncthing" # Glob pattern for files to lint
 
     - name: Lint with flake8
       uses: grantmcconnaughey/lintly-flake8-github-action@v1.0
